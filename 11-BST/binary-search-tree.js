@@ -186,29 +186,108 @@ class BinarySearchTree {
   breadthFirstForEach() {
     // escribe el metodo breadthFirstForEach
 
-    //evaluo si hay root
+    //contemplo arbol vacio
     if(this.root===null) return 0;
 
-    //Recorro de forma In order
-    //por izquierda
-    if(this.left){
-      this.left.breadthFirstForEach();   //NO ESTOY SEGURA!!
+    var queue = [];
+    var data = [];    
+
+    var current = this.root    // Arranco pusheando siempre el root a la cola
+
+    //Comenzamos pusheando para empezar la busqueda
+    queue.push(current);
+
+    //Iteramos mientras haya valores en la queue
+    while(queue.length){
+      //sacamos el primer valor de la cola y lo pisamos en la variable
+      current = queue.shift(current);
+
+      //pusheamos el "valor" del nodo dentro de data
+      data.push(current.value);
+
+      //Luego pusheamos al queue por izquierda y por derecha 
+      if(current.left) queue.push(current.left);
+      if(current.right) queue.push(current.right);   
+
     }
-    console.log(this.value);
-    if(this.right){
-      this.right.depthFirstForEach(); //  this.depthFirsForEach();
-    }
+
+    //retorno data cuando ya este vacia la cola y haya recorrido todo el arbol
+    return data;
+
+   
   }
 
-  depthFirstForEach(arg) {
+  depthFirstForEach(current=this.root) {      //Puedo hacer el recorrido que elija sin callback, solo tirando los valores a un array
     // escribe el metodo depthFirstForEach
+   
+   
+   //evaluo si hay root
+   if(this.root===null) return 0;
 
-    //Primero compruebo que el arbol no este vacio
-    if(this.root===null) return null;
-    
-    //Empiezo a meter los datos horizontalmente en una cola
-    var queue = [this.root];
+   //Recorro de forma In order
+   //por izquierda
+   if(current.left){
+      this.depthFirstForEach(current.left);   
+   }
 
-    
+  console.log(current.value);
+   
+   
+   if(current.right){
+      this.depthFirstForEach(current.right); 
+   }    
   }
+
+  depthFirstForEach2(current=this.root, order) {      //HECHO CON ELECCION DE ORDEN
+    // escribe el metodo depthFirstForEach   
+   
+   //evaluo si hay root
+   if(this.root===null) return 0;
+
+  switch (order){
+
+    case "pre-order":{
+      //imprime
+      console.log(current.value);
+      //por izquierda
+      if(current.left){
+        this.depthFirstForEach2(current.left);
+      }
+      //por derecha
+      if(current.right){
+        this.depthFirstForEach2(current.right);
+      }
+      break;
+    }
+
+    case "porst-order":{
+      //por izquierda
+      if(current.left){
+        this.depthFirstForEach2(current.left);
+      }
+      //por derecha
+      if(current.right){
+        this.depthFirstForEach2(current.right);
+      }
+      //imprimo valor
+      console.log(current.value);
+      break;
+    }
+
+    default:{   //in-order
+      //por izquierda
+      if(current.left){
+         this.depthFirstForEach2(current.left);   
+      }
+      //Imprimo valor
+     console.log(current.value);
+     //por derecha
+     if(current.right){
+       this.depthFirstForEach2(current.right); 
+      } 
+    }
+  }    
+   
+ }
+ 
 }

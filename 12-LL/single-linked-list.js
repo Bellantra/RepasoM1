@@ -14,7 +14,7 @@ class SinglyLinkedList {
   push(val) {
     // El metodo push nos permite insertar un nuevo valor AL FINAL
 
-    //Creo nodo y cargo el valor pasado por parametro.
+    //Creo nodo y cargo el valor pasado por parametro
     var nuevoNodo = new Node(val);
 
     //Reviso si tengo que pushear a una Lista vacia

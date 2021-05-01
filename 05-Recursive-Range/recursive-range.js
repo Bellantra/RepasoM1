@@ -9,4 +9,21 @@
  * @returns {Array || undefined} - deberia retornar un array o undefined.
  */
 
-function recursiveRange(num) {}
+function recursiveRange(num) {
+    var suma =0;
+    var i=0;
+
+    while(i!==num){
+        suma=suma +i;
+        i++;
+    }
+    return suma;
+}
+
+//CON RECURSION
+/* function recursiveRange(num) {
+    // if(num === 0)
+    if (num < 1) return 0;
+  
+    return num + recursiveRange(num - 1);
+  } */

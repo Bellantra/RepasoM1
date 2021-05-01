@@ -151,8 +151,7 @@ class SinglyLinkedList {
    if(nodoBuscado){
      nodoBuscado.val = data;
      return true;  // retorno true si encuentro indice y lo reemplazo   
-   }
-          
+   }          
   
   }
 

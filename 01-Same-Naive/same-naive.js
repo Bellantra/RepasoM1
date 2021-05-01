@@ -9,4 +9,26 @@
  * @returns {boolean} - deberia retornar true o false.
  */
 
-function same(arr1, arr2) {}
+function same(arr1, arr2) {
+
+    if(arr1.length!==arr2.length) return false;
+
+var esIgual=0;
+
+    for (var i=0 ;i < arr1.length; i++){
+        if(arr1[i]===Math.pow(arr2[i],2)){
+            esIgual++
+                }
+    }
+
+    if(esIgual===arr1.length) {
+        return true;
+    }else return false;
+}
+
+//var array1 = [1,4,9,16,25,36];                 
+//var array2 = [1,2,3,4,5,6];
+                                         //EJEMPLOS UTILIZADOS
+//var array3 = [4,5,6,7];
+//var array3 = [1,2]
+

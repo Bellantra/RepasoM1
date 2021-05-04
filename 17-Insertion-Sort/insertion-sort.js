@@ -10,7 +10,8 @@ function insertionSort(arr) {
  var aux; 
  //Esta estructura recorre el array de principio a fin
  for(let i=0; i < arr.length; i++){
-  for(var j=i; j >= 0; j--){
+
+  for(var j=i; j >= 0; j--){    //esta estructura empieza siempre en la pos i y retrocede comparando hasta llegar a la posicion 0
     if(arr[j+1] < arr[j]){
       aux = arr[j];
       arr[j] = arr[j+1];
